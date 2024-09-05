@@ -39,8 +39,16 @@ elif args.dataset == 'PEMS03':
     A = np.load('PEMS03/PEMS03-dtw-288-1-.npy')
 elif args.dataset == 'PEMS07':
     print("\nLoading HZ-Metro data...")
-    speed_matrix = pd.read_csv('PEMS07/pems07_flow (1).csv', sep=',')
-    A = np.load('PEMS07/PEMS07-dtw-288-1- (2).npy')
+    speed_matrix = pd.read_csv('PEMS07/pems07_flow.csv', sep=',')
+    A = np.load('PEMS07/PEMS07-dtw-288-1-.npy')
+elif args.dataset == 'PEMSBY':
+    print("\nLoading PEMSBY data...")
+    speed_matrix = pd.read_csv('PEMSBY/pemsby_flow.csv', sep=',')
+    A = np.load('PEMSBY/pemsby-dtw-288-1-.npy')
+elif args.dataset == 'metr-la':
+    print("\nLoading metr-la data...")
+    speed_matrix = pd.read_csv('metr-la/metr-la_flow.csv', sep=',')
+    A = np.load('metr-la/metr-la-dtw-288-1-.npy')
 print("\nPreparing train/test data...")
 train_dataloader, valid_dataloader, test_dataloader, max_value = PrepareDataset(speed_matrix, BATCH_SIZE=48)
 print(f"Train dataloader length: {len(train_dataloader)}")
