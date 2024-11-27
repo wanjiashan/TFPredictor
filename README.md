@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/4b0d9a4f-c7fa-4dfa-9540-cdbf19c845ac)## TFPredictor: A Multi-scale Selective State Space Model for Traffic Flow Prediction
+## TFPredictor: A Multi-scale Selective State Space Model for Traffic Flow Prediction
 
 ### Abstract
 
@@ -29,13 +29,14 @@ performance, computational efficiency, and interpretability.
 ![landslide](imgs/2.png)   ![landslide](imgs/2-1.png)
 
 Loss trend comparison between TFPredictor and other benchmark models at different epoch counts
-provides a detailed comparison of loss trends with increasing epochs under different architectures. From the analysis, it is evident that the Mamba model has significant advantages over Transformer-based models. To quantify the performance advantages of the ScaKAN component in the model further, we present the loss trends for MLP and ScaKAN in our model in Fig. ~\ref{fig5}. ScaKAN outperforms MLP, with the 4-layer KAN structure performing the best. Its loss decreases rapidly to the minimum level after relatively few epochs and remains stable. This indicates that ScaKAN not only provides more accurate prediction results but also maintains consistency under different traffic conditions, which is crucial for real-world traffic prediction scenarios.
+provides a detailed comparison of loss trends with increasing epochs under different architectures. From the analysis, it is evident that the Mamba model has significant advantages over Transformer-based models. To quantify the performance advantages of the ScaKAN component in the model further, we present the loss trends for MLP and ScaKAN in our model in Fig.ScaKAN outperforms MLP, with the 4-layer KAN structure performing the best. Its loss decreases rapidly to the minimum level after relatively few epochs and remains stable. This indicates that ScaKAN not only provides more accurate prediction results but also maintains consistency under different traffic conditions, which is crucial for real-world traffic prediction scenarios.
 
 
 ## 2. Training Procedure
 ### (1) Datasets
+![landslide](imgs/table1.png)
 We evaluate the performance of TFPredictor on six major
-traffic flow prediction benchmark datasets: METR-LA, PEMSBAY, PEMS03, PEMS04, PEMS07, and PEMS08. The time
+traffic flow prediction benchmark datasets: METR-LA, PEMS-BAY, PEMS03, PEMS04, PEMS07, and PEMS08. The time
 interval for each dataset is 5 minutes, resulting in 12 time
 frames per hour. These datasets are widely used in traffic
 prediction research and cover various traffic conditions and
@@ -45,36 +46,34 @@ refer to Table I.
 
 <b>PEMS04</b>: PEMS04: PEMS04 dataset is among the most popular benchmark in ST Data Mining & Traffic Forecasting. You can find the source data at here
 
+<b>METR-LA</b>: The METR-LA dataset is a popular benchmark for spatiotemporal data mining and traffic forecasting. It contains traffic data from 207 sensors across Los Angeles highways, with measurements on traffic flow, speed, and occupancy at 5-minute intervals.
+Data Source: Real-time traffic sensors in Los Angeles.
+Time Interval: 5-minute intervals, spanning several months.
+Features: Traffic flow, speed, and occupancy from 207 sensors across 1,500 miles of highways.
+Use Case: Ideal for testing models in traffic prediction and spatiotemporal analysis.
+Find the dataset [here](https://github.com/laekov/Traffic-Data).
 
-<b>Traffic</b>: Describes the occupancy rates (between 0 and 1) measured by 862 sensors on San Francisco, California,
-freeways. The data were sampled every hour from 2015 to 2016. Following [38], we convert the data to reffect hourly
-consumption.
 
+<b>PEMS-BAY</b>: The PEMS-BAY dataset is a widely used benchmark for spatiotemporal traffic forecasting. It contains traffic data from sensors across the Bay Area, California, focusing on real-time traffic conditions such as flow, speed, and occupancy.
+Data Source: Traffic sensors in the Bay Area, California.
+Time Interval: Data recorded at 5-minute intervals, spanning multiple months.
+Features: Traffic flow, speed, and occupancy data from 325 sensors across the Bay Area's freeway network.
+Use Case: Suitable for evaluating spatiotemporal prediction models and anomaly detection in traffic systems.
+You can access the dataset here.
 
-<b>Weather</b>: Provided by the Max Planck Institute for
-Biogeochemistry in Germany and records meteorological observation
- data for the city of Jena, Germany. The data includes
-multiple meteorological indicators such as temperature, precipitation,
- wind speed, etc., measured at different locations in
-Jena by ground stations. These data have been continuously
-collected every 10 minutes since 2003.
-
-<b>Landslide</b>: Describes the landslide geological disaster
-monitoring data for Yangchan Village in Huangshan City,
-China. The data spans from April 2022 to March 2023,
-recorded on a daily basis. It belongs to a self-built benchmark
-dataset.
 
 ### (2) Network Parameter Tuning
-Given that the hyperparameters that have a signiffcant
-impact on DAMixer network include the convolution kernel
-size, activation function, loss function, optimizer, number of
-training epochs, learning rate, number of nodes in the hidden
-layer, and number of hidden layers, this paper uses crossvalidation
- to ffnd the optimal parameter values that maximize
-the model’s generalization performance, as shown in Table I.
-![landslide](imgs/t1.png)
-
+![landslide](imgs/table2.png)
+This study comprehensively evaluates TFPredictor and compares it with several state-of-the-art baseline models. We report the performance of each model in terms of RMSE, MAE, and MAPE performance metrics in Tables 2 and 3. The main findings are as follows:
+(1) Overall superior performance: TFPredictor performs well across different datasets and prediction ranges, outperforming other baseline models in all metrics, highlighting TFPredictor's leading position in the field of traffic flow prediction.
+(2) Transformer-based models: Models such as STAEformer show different performance on different datasets. This difference in performance is attributed to the limitations of traditional attention mechanisms in handling complex spatiotemporal embeddings.
+(3) GNN-based models: GNN methods using static graphs such as DCRNN, STGCN, and MTGNN generally perform poorly. Dynamic graph models such as STPGNN perform well on some datasets. Their success is attributed to their use of dynamic graph structures to enhance the dynamic connections between key nodes, thereby better capturing the dynamic spatial associations in traffic networks. However, the overall performance is still slightly inferior to that of SSMs models.
+(4) Application of Large Language Models (LLMs): LLMs show significant advantages in spatiotemporal prediction, especially when dealing with complex data and predicting future trends. However, the complexity and opacity of LLMs may lead to difficulties in interpretation, making it difficult to understand the reasons behind the model predictions.
+(5) Performance on specific datasets: On the PEMS-BAY and METR-LA datasets, TFPredictor demonstrates its excellent fitting ability for complex multi-scale dependencies and relationships between variables.
+In summary, TFPredictor shows significant advantages in complex time series prediction tasks through its innovative multi-scale dynamic graph representation and effective multi-scale fusion mechanism.
+![landslide](imgs/table3.png)
+ACCURACY PERFORMANCE OF TRANSFORMER MODELS, GNNS, LLMS, AND SSMS ON THE PEMS-BAY AND METR-LA DATASETS. THE BEST
+RESULTS ARE HIGHLIGHTED IN BOLD, AND THE SECOND-BEST RESULTS ARE UNDERLINE
 
 
 ### (3) Benchmarks Models
