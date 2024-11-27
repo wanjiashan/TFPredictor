@@ -7,30 +7,15 @@
 Index Terms—Selective state space model, traffic flow, multiscale, Kolmogorov-Arnold network
 
 ![landslide](imgs/1.png)
-PerformanceComparisonofDifferent.
-(1) To address the limitations of existing methods that use
-fixed temporal resolution, we propose a multi-scale Selective
-State Space Model named TFPredictor. TFPredictor includes
-multi-scale decoupling and fusion modules, a state graph structure generator, and the Graph-Mamba block, comprehensively
-capturing multi-scale temporal patterns and enhancing the
-model’s multi-scale modeling capability.
-(2) We employ an SSSM to handle the traffic network,
-treating it as a dynamic system to simulate state evolution
-deeply along the temporal dimension, thereby enhancing the
-understanding of the system-level dynamics of the traffic
-network.
-(3) We design a model with linear time ${\cal O}\left( n \right)$ complexity,
-which not only improves prediction accuracy but also effectively shortens inference time, reduces computational costs,
-and enhances the model’s practicality and scalability.
-(4) Extensive empirical studies were conducted on six realworld public traffic datasets. The results demonstrate that
-our model outperforms state-of-the-art models in terms of
-performance, computational efficiency, and interpretability.
+
+To address the limitations of existing methods that use fixed temporal resolution, we propose a multi-scale Selective State Space Model named TFPredictor. TFPredictor includes multi-scale decoupling and fusion modules, a state graph structure generator, and the Graph-Mamba block, comprehensively capturing multi-scale temporal patterns and enhancing the model's multi-scale modeling capability.
+We employ an SSSM to handle the traffic network, treating it as a dynamic system to simulate state evolution deeply along the temporal dimension, thereby enhancing the understanding of the system-level dynamics of the traffic network.
 
 ![landslide](imgs/2.png)   ![landslide](imgs/2-1.png)
 
 Loss trend comparison between TFPredictor and other benchmark models at different epoch counts
 provides a detailed comparison of loss trends with increasing epochs under different architectures. From the analysis, it is evident that the Mamba model has significant advantages over Transformer-based models. To quantify the performance advantages of the ScaKAN component in the model further, we present the loss trends for MLP and ScaKAN in our model in Fig.ScaKAN outperforms MLP, with the 4-layer KAN structure performing the best. Its loss decreases rapidly to the minimum level after relatively few epochs and remains stable. This indicates that ScaKAN not only provides more accurate prediction results but also maintains consistency under different traffic conditions, which is crucial for real-world traffic prediction scenarios.
-
+We design a model with linear time ${\cal O}\left( n \right)$ complexity, which not only improves prediction accuracy but also effectively shortens inference time, reduces computational costs, and enhances the model's practicality and scalability.
 
 ## 2. Training Procedure
 ### (1) Datasets
