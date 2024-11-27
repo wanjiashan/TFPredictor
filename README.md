@@ -19,7 +19,7 @@ treating it as a dynamic system to simulate state evolution
 deeply along the temporal dimension, thereby enhancing the
 understanding of the system-level dynamics of the traffic
 network.
-(3) We design a model with linear time o (n) complexity,
+(3) We design a model with linear time ${\cal O}\left( n \right)$ complexity,
 which not only improves prediction accuracy but also effectively shortens inference time, reduces computational costs,
 and enhances the model’s practicality and scalability.
 (4) Extensive empirical studies were conducted on six realworld public traffic datasets. The results demonstrate that
