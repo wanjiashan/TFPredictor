@@ -4,22 +4,32 @@
 
 > *Most advanced traffic-forecasting methods rely on fixed temporal resolutions to handle both short-term and long-term variations in traffic flow, concentrating on capturing fixed-scale relationships among nodes in spatiotemporal graph networks. However, this fixed approach can lead to incomplete scale modeling and limit the model's adaptability to complex traffic dynamics. To overcome these challenges, we introduce a novel multi-scale Selective State Space Model (SSSM) named TFPredictor for traffic forecasting. TFPredictor features four key components: (a) multi-scale decomposition of input sequences via Fast Fourier Transform (FFT) to capture diverse periodic information in the frequency domain; (b) adaptive spatiotemporal modeling through the Kalman Filtering Graph Neural Network (KFGNN); (c) dynamic system analysis using TFPredictor to simulate state evolution accurately over time in spatiotemporal graph networks; and (d) multi-scale fusion via the Scale-weighted Kolmogorov-Arnold Network (ScaKAN) to assess and capture the significance of each scale and inter-scale correlations. Extensive empirical evaluations on six benchmark traffic-forecasting datasets reveal that TFPredictor achieves significant improvements in predictive performance and computational efficiency. Additionally, by visualizing the learned spatial representations and predictions across different scales, we enhance the model's interpretability. Code is available at https://github.com/wanjiashan/TFPredictor**
 
-Performance comparison of six selected methods in four types: GNNs, LLMs, Transformers, and Mixers, using the mean squared error as the metric.
+Index Terms—Selective state space model, traffic flow, multiscale, Kolmogorov-Arnold network
 
-![p1](./imgs/p1.png)
+![p1](./imgs/1.png)
+PerformanceComparisonofDifferent.
+(1) To address the limitations of existing methods that use
+fixed temporal resolution, we propose a multi-scale Selective
+State Space Model named TFPredictor. TFPredictor includes
+multi-scale decoupling and fusion modules, a state graph structure generator, and the Graph-Mamba block, comprehensively
+capturing multi-scale temporal patterns and enhancing the
+model’s multi-scale modeling capability.
+(2) We employ an SSSM to handle the traffic network,
+treating it as a dynamic system to simulate state evolution
+deeply along the temporal dimension, thereby enhancing the
+understanding of the system-level dynamics of the traffic
+network.
+(3) We design a model with linear time o (n) complexity,
+which not only improves prediction accuracy but also effectively shortens inference time, reduces computational costs,
+and enhances the model’s practicality and scalability.
+(4) Extensive empirical studies were conducted on six realworld public traffic datasets. The results demonstrate that
+our model outperforms state-of-the-art models in terms of
+performance, computational efficiency, and interpretability.
 
-Potential interactions among variables in MTS prediction are critical. Most studies have used a pre-set static correlation (s0). However, in reality, the graph structure changes over time (s1 and s2), and these changes differ based on the scale of observation (s3). Therefore, it is crucial to consider the dynamic nature and scale effects of these inter-variable interactions when predicting MTS.
+![p2](./imgs/2.png)   ![p3](./imgs/2-1.png)
+Loss trend comparison between TFPredictor and other benchmark models at different epoch counts
 
-![p2](./imgs/p2.png)
-
-Architecture of the MSPredictor. (a) Multi-Scale Decoupling Module (MDM): This module uses FFT to decompose the original sequence into different scales, capturing various periodic information in the frequency domain of the input sequence. (b) Evolving Graph Structure Learner (EGSL): This learner is responsible for learning and updating the multi-scale temporal graph structure to adapt to the dynamic changes in time series data. (c) Multi-Scale Spatiotemporal Module (MSTM): This module contains *k* GNNs and TCNs, designed to capture the dynamic and complex relationships between variables at specific scales. (d) Multi-Scale Fusion Module (MFM): This module integrates features and temporal pattern information from the MSTM. It effectively combines information from different scales through an *L*-layer KAN, significantly enhancing the accuracy and stability of predictions.
-
-![p3](./imgs/p3.png)
-
-The architecture of multi-scale fusion module, which primarily en- compasses three key operations: (a) Concatenation is employed to amalgamate representations from various scales into a singular, unified vector, ensuring a comprehensive aggregation of information. (b) Pooling is applied to reduce the dimensionality of the combined feature vector, highlighting the most crucial features. (c) Fully connected layer composed of *L*-layer KAN.
-
-![p4](./imgs/p4.png)
-
+provides a detailed comparison of loss trends with increasing epochs under different architectures. From the analysis, it is evident that the Mamba model has significant advantages over Transformer-based models. To quantify the performance advantages of the ScaKAN component in the model further, we present the loss trends for MLP and ScaKAN in our model in Fig. ~\ref{fig5}. ScaKAN outperforms MLP, with the 4-layer KAN structure performing the best. Its loss decreases rapidly to the minimum level after relatively few epochs and remains stable. This indicates that ScaKAN not only provides more accurate prediction results but also maintains consistency under different traffic conditions, which is crucial for real-world traffic prediction scenarios.
 
 
 
