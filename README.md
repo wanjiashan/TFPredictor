@@ -44,22 +44,10 @@ challenges. For more information about these datasets, please
 refer to Table I.
 
 
-<b>PEMS04</b>: PEMS04: PEMS04 dataset is among the most popular benchmark in ST Data Mining & Traffic Forecasting. You can find the source data at here
+<b>PEMS04</b>: A benchmark in spatiotemporal data mining & traffic forecasting. [Data Source](link)
+<b>METR-LA</b>:Traffic data from 207 sensors in Los Angeles highways. [Data Source](https://github.com/laekov/Traffic-Data).
 
-<b>METR-LA</b>: The METR-LA dataset is a popular benchmark for spatiotemporal data mining and traffic forecasting. It contains traffic data from 207 sensors across Los Angeles highways, with measurements on traffic flow, speed, and occupancy at 5-minute intervals.
-Data Source: Real-time traffic sensors in Los Angeles.
-Time Interval: 5-minute intervals, spanning several months.
-Features: Traffic flow, speed, and occupancy from 207 sensors across 1,500 miles of highways.
-Use Case: Ideal for testing models in traffic prediction and spatiotemporal analysis.
-Find the dataset [here](https://github.com/laekov/Traffic-Data).
-
-
-<b>PEMS-BAY</b>: The PEMS-BAY dataset is a widely used benchmark for spatiotemporal traffic forecasting. It contains traffic data from sensors across the Bay Area, California, focusing on real-time traffic conditions such as flow, speed, and occupancy.
-Data Source: Traffic sensors in the Bay Area, California.
-Time Interval: Data recorded at 5-minute intervals, spanning multiple months.
-Features: Traffic flow, speed, and occupancy data from 325 sensors across the Bay Area's freeway network.
-Use Case: Suitable for evaluating spatiotemporal prediction models and anomaly detection in traffic systems.
-You can access the dataset here.
+<b>PEMS-BAY</b>: Traffic data from 325 sensors across the Bay Area, California. [Data Source](link).
 
 
 ### (2) Network Parameter Tuning
@@ -79,21 +67,17 @@ RESULTS ARE HIGHLIGHTED IN BOLD, AND THE SECOND-BEST RESULTS ARE UNDERLINE
 ### (3) Benchmarks Models
 We train benchmark models such as <a href="https://github.com/LincanLi98/STG-Mamba" target="_blank">STG-Mamba</a>, <a href="https://github.com/XDZhelheim/STAEformer" target="_blank">STAEformer</a>, <a href="https://github.com/BUAABIGSCity/PDFormer" target="_blank">PDFormer</a>, <a href="https://github.com/chnsh/DCRNN_PyTorch" target="_blank">DCRNN</a>, <a href="https://github.com/hazdzz/STGCN" target="_blank">STGCN</a>, <a href="https://github.com/nnzhan/MTGNN" target="_blank">MTGNN</a>, <a href="https://github.com/zhengchuanpan/GMAN" target="_blank">GMAN</a>, ,<a href="https://github.com/LiuAoyu1998/STIDGCN" target="_blank">STIDGCN</a>, <a href="https://github.com/wengwenchao123/DDGCRN" target="_blank">DDGCRN</a> ,<a href="https://github.com/LeiBAI/AGCRN" target="_blank">AGCRN</a>, and <a href="https://github.com/nnzhan/Graph-WaveNet" target="_blank">Graph-WaveNet</a> based on the same sample set.
 
-# TFPredictor
-首先需要加压数据集
-例如运行PEMSBY
-调参prepare.py里面的if speed_sequences.shape[2] > 325:
-        speed_sequences = speed_sequences[:, :, :325]和train_STGmamba里面的mamba_features=325这个参数，这个对应具体数据集的特征，比如PESMSBY是325，
-  然后那个metr-la是207，就需要调一下，运行代码 
+### 3.run
+First, you need to compress the data set. For example, when running PEMSBY, adjust the parameters in prepare.py if speed_sequences.shape[2] > 325: speed_sequences = speed_sequences[:, :, :325] and the parameter mamba_features=325 in train_STGmamba. This corresponds to the characteristics of the specific data set. For example, PESMBY is 325, and metr-la is 207. You need to adjust it and run the code.
 ```bash
 #PESMSBY
-  python main.py -dataset=PEMSBY -model=STGmamba -mamba_features=325 
+  python main.py -dataset=PEMSBY -model=TFPredictor -mamba_features=325 
 ```
 ```bash
 #metr-la
-  python main.py -dataset=metr-la -model=STGmamba -mamba_features=207
+  python main.py -dataset=metr-la -model=TFPredictor -mamba_features=207
 ```
 ```bash
 #PEMS04
-  python main.py -dataset=PREMS04 -model=STGmamba -mamba_features=307
+  python main.py -dataset=PREMS04 -model=TFPredictor -mamba_features=307
 ```
