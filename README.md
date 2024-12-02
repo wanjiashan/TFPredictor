@@ -46,8 +46,8 @@ This study comprehensively evaluates TFPredictor and compares it with several st
 (5) Performance on specific datasets: On the PEMS-BAY and METR-LA datasets, TFPredictor demonstrates its excellent fitting ability for complex multi-scale dependencies and relationships between variables.
 In summary, TFPredictor shows significant advantages in complex time series prediction tasks through its innovative multi-scale dynamic graph representation and effective multi-scale fusion mechanism.
 ![landslide](imgs/table3.png)
-ACCURACY PERFORMANCE OF TRANSFORMER MODELS, GNNS, LLMS, AND SSMS ON THE PEMS-BAY AND METR-LA DATASETS. THE BEST
-RESULTS ARE HIGHLIGHTED IN BOLD, AND THE SECOND-BEST RESULTS ARE UNDERLINE
+
+accuracy performance of transformer models, gnns, llms, and ssms on the pems-bay and metr-la datasets. the best results are highlighted in bold, and the second-best results are underline.
 
 
 ### (3) Benchmarks Models
