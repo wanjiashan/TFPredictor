@@ -4,11 +4,11 @@ import math
 import torch
 import torch.optim as optim
 from torch.optim.lr_scheduler import CosineAnnealingLR, ReduceLROnPlateau
-from STGMamba import *
+from TFPredictor import *
 from torch.autograd import Variable
 
 
-def TrainSTG_Mamba(train_dataloader, valid_dataloader, A, K=3, num_epochs=100, mamba_features=883):
+def TrainTFPredictor(train_dataloader, valid_dataloader, A, K=3, num_epochs=100, mamba_features=883):
     inputs, labels = next(iter(train_dataloader))
     [batch_size, step_size, fea_size] = inputs.size()
     input_dim = fea_size
@@ -45,7 +45,7 @@ def TrainSTG_Mamba(train_dataloader, valid_dataloader, A, K=3, num_epochs=100, m
     cur_time = time.time()
     pre_time = time.time()
 
-    early_stopping_patience = 50 # Increase patience for early stopping
+    early_stopping_patience = 50  # Increase patience for early stopping
     best_val_loss = float('inf')
     patience_counter = 0
 
@@ -132,7 +132,7 @@ def TrainSTG_Mamba(train_dataloader, valid_dataloader, A, K=3, num_epochs=100, m
     kfgn_mamba.load_state_dict(torch.load('best_model.pth'))
 
     return kfgn_mamba, [losses_train, losses_interval_train, losses_valid, losses_interval_valid]
-def TestSTG_Mamba(kfgn_mamba, test_dataloader, max_speed):
+def TestTFPredictor(kfgn_mamba, test_dataloader, max_speed):
     use_gpu = torch.cuda.is_available()
     loss_MSE = torch.nn.MSELoss()
     losses_mse = []
