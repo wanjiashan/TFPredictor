@@ -45,10 +45,7 @@ refer to Table I.
 
 
 ### (2) Network Parameter Tuning
-<div align="center">
-  <img src="imgs/table2.png" alt="Example Image" width="500" />
-</div>
-
+![landslide](imgs/table2.png)
 This study comprehensively evaluates TFPredictor and compares it with several state-of-the-art baseline models. We report the performance of each model in terms of RMSE, MAE, and MAPE performance metrics in Tables 2 and 3. The main findings are as follows:
 (1) Overall superior performance: TFPredictor performs well across different datasets and prediction ranges, outperforming other baseline models in all metrics, highlighting TFPredictor's leading position in the field of traffic flow prediction.
 (2) Transformer-based models: Models such as STAEformer show different performance on different datasets. This difference in performance is attributed to the limitations of traditional attention mechanisms in handling complex spatiotemporal embeddings.
@@ -56,10 +53,8 @@ This study comprehensively evaluates TFPredictor and compares it with several st
 (4) Application of Large Language Models (LLMs): LLMs show significant advantages in spatiotemporal prediction, especially when dealing with complex data and predicting future trends. However, the complexity and opacity of LLMs may lead to difficulties in interpretation, making it difficult to understand the reasons behind the model predictions.
 (5) Performance on specific datasets: On the PEMS-BAY and METR-LA datasets, TFPredictor demonstrates its excellent fitting ability for complex multi-scale dependencies and relationships between variables.
 In summary, TFPredictor shows significant advantages in complex time series prediction tasks through its innovative multi-scale dynamic graph representation and effective multi-scale fusion mechanism.
+![landslide](imgs/table3.png)
 
-<div align="center">
-  <img src="imgs/table3.png" alt="Example Image" width="500" />
-</div>
 accuracy performance of transformer models, gnns, llms, and ssms on the pems-bay and metr-la datasets. the best results are highlighted in bold, and the second-best results are underline.
 
 
