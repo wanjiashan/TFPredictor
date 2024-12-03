@@ -6,16 +6,20 @@
 
 Index Terms—Selective state space model, traffic flow, multi-scale, Kolmogorov-Arnold network
 
-![landslide](imgs/1.png)
-
 <div align="center">
   <img src="imgs/1.png" alt="Example Image" width="500" />
 </div>
 
 To address the limitations of existing methods that use fixed temporal resolution, we propose a multi-scale Selective State Space Model named TFPredictor. TFPredictor includes multi-scale decoupling and fusion modules, a state graph structure generator, and the Graph-Mamba block, comprehensively capturing multi-scale temporal patterns and enhancing the model's multi-scale modeling capability.
 We employ an SSSM to handle the traffic network, treating it as a dynamic system to simulate state evolution deeply along the temporal dimension, thereby enhancing the understanding of the system-level dynamics of the traffic network.
+<div align="center">
+  <img src="imgs/2.png" alt="Example Image" width="500" />
+</div>
+<div align="center">
+  <img src="imgs/2-1.png" alt="Example Image" width="500" />
+</div>
 
-![landslide](imgs/2.png)   ![landslide](imgs/2-1.png)
+
 
 Loss trend comparison between TFPredictor and other benchmark models at different epoch counts
 provides a detailed comparison of loss trends with increasing epochs under different architectures. From the analysis, it is evident that the Mamba model has significant advantages over Transformer-based models. To quantify the performance advantages of the ScaKAN component in the model further, we present the loss trends for MLP and ScaKAN in our model in Fig.ScaKAN outperforms MLP, with the 4-layer KAN structure performing the best. Its loss decreases rapidly to the minimum level after relatively few epochs and remains stable. This indicates that ScaKAN not only provides more accurate prediction results but also maintains consistency under different traffic conditions, which is crucial for real-world traffic prediction scenarios.
@@ -41,7 +45,10 @@ refer to Table I.
 
 
 ### (2) Network Parameter Tuning
-![landslide](imgs/table2.png)
+<div align="center">
+  <img src="imgs/table2.png" alt="Example Image" width="500" />
+</div>
+
 This study comprehensively evaluates TFPredictor and compares it with several state-of-the-art baseline models. We report the performance of each model in terms of RMSE, MAE, and MAPE performance metrics in Tables 2 and 3. The main findings are as follows:
 (1) Overall superior performance: TFPredictor performs well across different datasets and prediction ranges, outperforming other baseline models in all metrics, highlighting TFPredictor's leading position in the field of traffic flow prediction.
 (2) Transformer-based models: Models such as STAEformer show different performance on different datasets. This difference in performance is attributed to the limitations of traditional attention mechanisms in handling complex spatiotemporal embeddings.
@@ -49,8 +56,10 @@ This study comprehensively evaluates TFPredictor and compares it with several st
 (4) Application of Large Language Models (LLMs): LLMs show significant advantages in spatiotemporal prediction, especially when dealing with complex data and predicting future trends. However, the complexity and opacity of LLMs may lead to difficulties in interpretation, making it difficult to understand the reasons behind the model predictions.
 (5) Performance on specific datasets: On the PEMS-BAY and METR-LA datasets, TFPredictor demonstrates its excellent fitting ability for complex multi-scale dependencies and relationships between variables.
 In summary, TFPredictor shows significant advantages in complex time series prediction tasks through its innovative multi-scale dynamic graph representation and effective multi-scale fusion mechanism.
-![landslide](imgs/table3.png)
 
+<div align="center">
+  <img src="imgs/table3.png" alt="Example Image" width="500" />
+</div>
 accuracy performance of transformer models, gnns, llms, and ssms on the pems-bay and metr-la datasets. the best results are highlighted in bold, and the second-best results are underline.
 
 
