@@ -8,6 +8,10 @@ Index Terms—Selective state space model, traffic flow, multi-scale, Kolmogorov
 
 ![landslide](imgs/1.png)
 
+<div align="center">
+  <img src="imgs/1.pngg" alt="Example Image" width="500" />
+</div>
+
 To address the limitations of existing methods that use fixed temporal resolution, we propose a multi-scale Selective State Space Model named TFPredictor. TFPredictor includes multi-scale decoupling and fusion modules, a state graph structure generator, and the Graph-Mamba block, comprehensively capturing multi-scale temporal patterns and enhancing the model's multi-scale modeling capability.
 We employ an SSSM to handle the traffic network, treating it as a dynamic system to simulate state evolution deeply along the temporal dimension, thereby enhancing the understanding of the system-level dynamics of the traffic network.
 
