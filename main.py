@@ -10,11 +10,11 @@ import matplotlib.pyplot as plt
 
 parser = argparse.ArgumentParser(description='Train & Test TFPredictor for traffic/weather/flow forecasting')
 # choose dataset
-parser.add_argument('-dataset', type=str, default='pems04', help='which dataset to run [options: PEMSBY, pems04, metr-la]')
+parser.add_argument('-dataset', type=str, default='pems04', help='which dataset to run [options: pems04,PEMSBY,metr-la]')
 # choose model
 parser.add_argument('-model', type=str, default='TFPredictor', help='which model to train & test [options: TFPredictor.py]')
 # choose number of node features
-parser.add_argument('-mamba_features', type=int, default=325, help='number of features for the STGmamba model [options: 325,307,207]')
+parser.add_argument('-mamba_features', type=int, default=307, help='number of features for the STGmamba model [options: 307,325,207]')
 
 args = parser.parse_args()
 
