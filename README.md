@@ -62,6 +62,10 @@ We train benchmark models such as <a href="https://github.com/LincanLi98/STG-Mam
 ## 3.run
 First, you need to compress the data set. For example, when running PEMSBY, adjust the parameters in prepare.py if speed_sequences.shape[2] > 325: speed_sequences = speed_sequences[:, :, :325] and the parameter mamba_features=325 in train_STGmamba. This corresponds to the characteristics of the specific data set. For example, PESMBY is 325, and metr-la is 207. You need to adjust it and run the code.
 ```bash
+#PEMS04
+  python main.py -dataset=PREMS04 -model=TFPredictor -mamba_features=307
+```
+```bash
 #PESMSBY
   python main.py -dataset=PEMSBY -model=TFPredictor -mamba_features=325 
 ```
@@ -69,10 +73,7 @@ First, you need to compress the data set. For example, when running PEMSBY, adju
 #metr-la
   python main.py -dataset=metr-la -model=TFPredictor -mamba_features=207
 ```
-```bash
-#PEMS04
-  python main.py -dataset=PREMS04 -model=TFPredictor -mamba_features=307
-```
+
 ## 4. Conclusion
   In this paper, we explored the multi-scale Selective State Space Model, TFPredictor, in detail and evaluated its effectiveness in handling spatiotemporal data, particularly in critical traffic flow prediction tasks, where the model can effectively model and predict sequence data. By introducing KFGNN, TFPredictor achieves dynamic evolution of the spatiotemporal graph adjacency matrix, which is closely integrated with the SSSM process of the entire graph. Additionally, we introduced the Graph-Mamba block, a module designed based on the SSSM to optimize graph data processing. Using the ScaKAN architecture for the multi-scale fusion module, TFPredictor ensures effective cross-scale correlation capture, improving the accuracy and robustness of multi-scale representations. Compared to attention-based methods, TFPredictor significantly reduces inference time while maintaining linear time complexity.
 Extensive empirical studies conducted on multiple traffic datasets demonstrate that TFPredictor outperforms other benchmark methods in both prediction performance and computational efficiency. Furthermore, we performed an in-depth interpretability analysis on the PEMS-BAY and METR-LA datasets, showcasing the interpretative capability of the TFPredictor model.
