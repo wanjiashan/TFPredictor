@@ -48,7 +48,7 @@ def PrepareDataset(speed_matrix, BATCH_SIZE=-1, seq_len=5, pred_len=5, train_pro
     fft_features = fft_transform_with_timescale(speed_sequences, timescale)
     fft_features_expanded = np.expand_dims(fft_features, axis=1).repeat(seq_len, axis=1)
     speed_sequences = np.concatenate((speed_sequences, fft_features_expanded), axis=2)
-
+###[325,307,207,..]
     if speed_sequences.shape[2] > 307:
         speed_sequences = speed_sequences[:, :, :307]
 
