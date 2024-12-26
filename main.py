@@ -55,7 +55,7 @@ print(f"Validation dataloader length: {len(valid_dataloader)}")
 print(f"Test dataloader length: {len(test_dataloader)}")
 
 if args.model == 'TFPredictor':
-    print("\nTraining STGmamba model...")
+    print("\nTraining TFPredictor model...")
     TFPredictor, TFPredictor_loss = TrainTFPredictor(train_dataloader, valid_dataloader, A, K=3, num_epochs=200, mamba_features=args.mamba_features)
-    print("\nTesting STGmamba model...")
+    print("\nTesting TFPredictor model...")
     results = TestTFPredictor(TFPredictor, test_dataloader, max_value)
