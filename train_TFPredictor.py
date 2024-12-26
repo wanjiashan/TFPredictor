@@ -8,7 +8,7 @@ from TFPredictor import *
 from torch.autograd import Variable
 
 
-def TrainTFPredictor(train_dataloader, valid_dataloader, A, K=3, num_epochs=100, mamba_features=883):
+def TrainTFPredictor(train_dataloader, valid_dataloader, A, K=3, num_epochs=100, mamba_features=307):
     inputs, labels = next(iter(train_dataloader))
     [batch_size, step_size, fea_size] = inputs.size()
     input_dim = fea_size
