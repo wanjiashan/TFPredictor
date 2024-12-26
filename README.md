@@ -63,7 +63,7 @@ We train benchmark models such as <a href="https://github.com/LincanLi98/STG-Mam
 First, you need to compress the data set. For example, when running PEMSBY, adjust the parameters in prepare.py if speed_sequences.shape[2] > 325: speed_sequences = speed_sequences[:, :, :325] and the parameter mamba_features=325 in train_STGmamba. This corresponds to the characteristics of the specific data set. For example, PESMBY is 325, and metr-la is 207. You need to adjust it and run the code.
 ```bash
 #PEMS04
-  python main.py -dataset=PREMS04 -model=TFPredictor -mamba_features=307
+  python main.py -dataset=pems04 -model=TFPredictor -mamba_features=307
 ```
 ```bash
 #PESMSBY
